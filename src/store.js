@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    deactiveUsers: [],
     userList: [{
         id: 0,
         isActive: true,

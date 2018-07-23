@@ -1,31 +1,21 @@
 <template>
     <div class="wrapper">
         <div class="left">
-            <UsersList v-bind:userList="activeUserList" title="Active Users"/>
+            <UsersList />
         </div>
         <div class="right">
-            <UsersList  v-bind:userList="deactiveUserList" title="Deactive Users"/>
+            <DeactiveUsersList />
         </div>
     </div>
 </template>
 <script>
     import UsersList from './UsersList.vue'
+    import DeactiveUsersList from './DeactiveUsersList.vue'
     export default {
         name: 'UserContent',
         components: {
-            UsersList
-        },
-        computed: {
-            activeUserList: function () {
-                return this.$store.state.userList.filter(function (user){
-                    return user.isActive == true;
-                })
-            },
-            deactiveUserList: function () {
-                return this.$store.state.userList.filter(function (user){
-                    return user.isActive == false;
-                })
-            } 
+            UsersList,
+            DeactiveUsersList
         }
     }
 </script>

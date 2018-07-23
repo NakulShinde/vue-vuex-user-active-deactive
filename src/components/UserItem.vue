@@ -13,16 +13,36 @@
         props: ['user'],
         methods: {
             toggleUserActivation(user) {
-                //add update date before deactivatin user 
-                if(user.isActive){
-                    user = Object.assign(user, { date : new Date()});
-                }else {
-                    //delete updated date before activating user
-                    if(user.date){
-                        delete user.date;
-                    }
+
+                (user.isActive)? this.deactivateUser(user): this.activateUser(user);
+
+            },
+            activateUser : function (user){
+
+                //remove user from deactiveUsers
+                this.$store.state.deactiveUsers.splice(this.$store.state.deactiveUsers.indexOf(user), 1);
+
+                let newUser = Object.assign({}, user);
+                
+                //update activation state
+                newUser.isActive = true;
+                if(newUser.date){
+                    delete newUser.date
                 }
-                user.isActive = !user.isActive;
+
+                this.$store.state.userList.push(newUser);
+
+            },
+            deactivateUser : function (user){
+                //remove user from userList
+                this.$store.state.userList.splice(this.$store.state.userList.indexOf(user), 1);
+
+                let newUser = Object.assign({date : new Date() }, user);
+                
+                //update activation state
+                newUser.isActive = false;
+
+                this.$store.state.deactiveUsers.push(newUser);
             }
         },
         computed: {
