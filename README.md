@@ -1,4 +1,4 @@
-# vue-vuex-user-app
+# vue-vuex-user-active-deactive
 
 ## Project setup
 ```
