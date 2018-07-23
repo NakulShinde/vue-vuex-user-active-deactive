@@ -38,6 +38,16 @@ export default new Vuex.Store({
       },
     ],
   },
+  getters: {
+    activeUsers: function (state) {
+      return state.userList.filter(function (user) {
+        return user.isActive == true;
+      })
+    },
+    deactiveUsers: function (state) {
+      return state.deactiveUsers;
+    }
+  },
   mutations: {
 
   },

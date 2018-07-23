@@ -16,9 +16,7 @@
         },
         computed: {
             activeUserList: function () {
-                return this.$store.state.userList.filter(function (user){
-                    return user.isActive == true;
-                })
+                return this.$store.getters.activeUsers;
             }
         }
     }

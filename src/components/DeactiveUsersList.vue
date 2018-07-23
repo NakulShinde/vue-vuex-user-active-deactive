@@ -16,7 +16,7 @@
         },
         computed: {
             deactiveUsers: function () {
-                return this.$store.state.deactiveUsers;
+                return this.$store.getters.deactiveUsers;
             }
         }
     }
