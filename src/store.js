@@ -49,27 +49,27 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    activateUser: function (state, userPayload) {
+    activateUser: function (state, payload) {
       //remove user from deactiveUsers
-      state.deactiveUsers.splice(state.deactiveUsers.indexOf(userPayload), 1);
+      state.deactiveUsers.splice(state.deactiveUsers.indexOf(payload.user), 1);
 
-      let newUser = Object.assign({}, userPayload);
+      let newUser = Object.assign({}, payload.user);
 
       //update activation state
       newUser.isActive = true;
       if (newUser.date) {
         delete newUser.date
       }
-
+      
       state.userList.push(newUser);
     },
-    deactivateUser: function (state, userPayload) {
+    deactivateUser: function (state, payload) {
       //remove user from userList
-      state.userList.splice(state.userList.indexOf(userPayload), 1);
+      state.userList.splice(state.userList.indexOf(payload.user), 1);
 
       let newUser = Object.assign({
         date: new Date()
-      }, userPayload);
+      }, payload.user);
 
       //update activation state
       newUser.isActive = false;

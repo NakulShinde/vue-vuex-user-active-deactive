@@ -14,7 +14,7 @@
                 if (user.isActive) {
                     this.$store.commit({
                         type: 'deactivateUser',
-                        user: user.id
+                        user: user
                     });
                 } else {
                     this.$store.commit({
