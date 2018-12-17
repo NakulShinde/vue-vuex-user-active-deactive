@@ -12,12 +12,12 @@
         methods: {
             toggleUserActivation(user) {
                 if (user.isActive) {
-                    this.$store.commit({
+                    this.$store.dispatch({
                         type: 'deactivateUser',
                         user: user
                     });
                 } else {
-                    this.$store.commit({
+                    this.$store.dispatch({
                         type: 'activateUser',
                         user: user
                     });

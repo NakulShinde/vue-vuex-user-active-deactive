@@ -60,7 +60,7 @@ export default new Vuex.Store({
       if (newUser.date) {
         delete newUser.date
       }
-      
+
       state.userList.push(newUser);
     },
     deactivateUser: function (state, payload) {
@@ -78,6 +78,21 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    
+    activateUser({ commit }, payload) {
+      //1 sec delayed to call respective mutation 
+      setTimeout(() => {
+        commit('activateUser', payload);
+      }, 1000);
+      
+    },
 
+    deactivateUser({ commit }, payload) {
+      //1 sec delayed to call respective mutation 
+      setTimeout(() => {
+        commit('deactivateUser', payload);
+      }, 1000);
+
+    }
   }
 })
